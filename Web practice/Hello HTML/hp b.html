@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe9e9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        h1 {
+            color: #ff4d4d;
+        }
+        .container {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .box {
+            margin: 50px auto;
+            padding: 20px;
+            border: 2px solid #ff4d4d;
+            border-radius: 15px;
+            width: 400px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #e63939;
+        }
+        .message, .blessing {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+        .blessing {
+            font-style: italic;
+        }
+        .emoji {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .animated {
+            animation: float 3s infinite;
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+        /* Balloon animation */
+        .balloon {
+            width: 50px;
+            height: 70px;
+            background-color: #ff4d4d;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -100px;
+            animation: float 4s infinite ease-in-out;
+        }
+        .balloon:nth-child(1) {
+            left: 20%;
+            animation-duration: 6s;
+            background-color: #ffcc00;
+        }
+        .balloon:nth-child(2) {
+            left: 40%;
+            animation-duration: 7s;
+            background-color: #ff4d4d;
+        }
+        .balloon:nth-child(3) {
+            left: 60%;
+            animation-duration: 5s;
+            background-color: #66ccff;
+        }
+        .balloon:nth-child(4) {
+            left: 80%;
+            animation-duration: 8s;
+        }
+        /* Video styling */
+        .video {
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .video-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Page -->
+    <div id="mainPage" class="container active">
+        <div class="box">
+            <h1 class="animated">🎉 Happy Birthday! 🎂🎁</h1>
+            <p class="emoji">🎈🎈✨✨🎈🎈</p>
+            <p>Enter your name to celebrate:</p>
+            <input type="text" id="nameInput" placeholder="Enter your name" />
+            <button onclick="showBlessingCard()">🎁 View Your Blessing Card</button>
+            <p><strong>Date: 29/11/2024</strong></p>
+            <p id="error" class="error"></p>
+        </div>
+        <!-- Floating balloons -->
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+    </div>
+
+    <!-- Blessing Card Page -->
+    <div id="blessingCardPage" class="container">
+        <div class="box fade-in">
+            <h1>🎉 Happy Birthday, <span id="displayName">Friend</span>! 🎂</h1>
+            <p class="emoji">🎈✨💖🎁</p>
+            <p><strong>Date: 29/11/2024</strong></p>
+            <div class="blessing">
+                Wishing you all the joy, love, and success that life has to offer. 🎉 <br>
+                On this special day, may your heart be filled with happiness, <br>
+                and may your dreams soar high like balloons in the sky. <br>
+                You are truly special, and today is all about celebrating you! 💖
+            </div>
+            <!-- Birthday Cake Video -->
+            <video class="video" autoplay muted loop>
+                <source src="Birthday Video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Play Audio of Happy Birthday -->
+            <audio id="birthdayAudio" controls autoplay>
+                <source src="happy-birthday-lofi-version-222774.mp3" type="audio/mp3">
+                Your 
+            </audio>
+            <button onclick="showMainPage()">⬅️ Back to Main Page</button>
+        </div>
+
+    <script>
+        function showBlessingCard() {
+            const nameInput = document.getElementById("nameInput");
+            const name = nameInput.value.trim();
+            const error = document.getElementById("error");
+
+            if (!name) {
+                error.textContent = "Please enter your name to proceed!";
+                return;
+            }
+
+            // Set name for the blessing card
+            error.textContent = ""; // Clear error message
+            document.getElementById("displayName").textContent = name; // Set name on blessing card
+            
+            // Show the blessing card page
+            document.getElementById("mainPage").classList.remove("active");
+            document.getElementById("blessingCardPage").classList.add("active");
+        }
+
+        function showMainPage() {
+            document.getElementById("blessingCardPage").classList.remove("active");
+            document.getElementById("mainPage").classList.add("active");
+        }
+    </script>
+</body>
+</html>

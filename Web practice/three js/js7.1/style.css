@@ -1,0 +1,14 @@
+h1{
+    color: red;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+}
+
+.dsa{
+    color: rgb(163, 21, 21);
+    height: 100px;
+    width: 100px;
+    background-color: aquamarine;
+    border: 1px solid black;
+}

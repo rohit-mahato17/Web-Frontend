@@ -1,0 +1,35 @@
+h1 {
+  color: blue;
+  background-color: rgb(163, 217, 220);
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* height: 100vh; */
+}
+
+.mybtn {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 24px;
+  /* border: none; */
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.mebtn{
+  color: black;
+  background-color: rgb(255, 200, 0);
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 18px;
+ } 
+
+ .mebtn:hover{
+  background-color: #9b85b7;
+ }
+
+.mybtn:hover {
+  background-color: #4550a0;
+}

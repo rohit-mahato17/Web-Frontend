@@ -1,0 +1,25 @@
+ #heading{
+    color: aqua;
+    background-color: red;
+}
+#heading2{
+    color: blue;
+}
+.heading2{
+    color: orange;
+}
+body{
+    background-color: aliceblue;
+}
+button{
+    color: black;
+    background-color: rgb(178, 188, 212);
+    
+}
+#box{
+    height: 200px;
+     width: 100px;
+     background-color: aqua;
+     color: white;
+     border: black;
+}
